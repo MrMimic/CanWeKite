@@ -1,0 +1,23 @@
+language: python
+
+# Can provide different OS to try on it
+# Also different version from a given package
+
+python:
+  - "3.7"
+
+# Ugly but setupt.py dont want to install the lib
+before_install:
+  - export PYTHONPATH=$PYTHONPATH:$(pwd)/src/main
+
+# command to install dependencies
+install:
+  - pip install -U pip
+  - python3 -m venv venv
+  - source venv/bin/activate
+  - pip install -r requirements.pip
+  - python setup.py install
+
+# command to run tests
+script:
+  - pytest src/tests
