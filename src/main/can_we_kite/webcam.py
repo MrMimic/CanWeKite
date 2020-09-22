@@ -8,5 +8,7 @@ def take_screenshot(date):
     driver.get('https://www.onekite.com/asso/webcams_onekite/monteynard-4K/full.html')
     driver.execute_script("window.scrollTo(0, 450);")
 
-    screenshot = driver.save_screenshot(os.path.join("images", f"{date.strftime('%Y_%m_%d_%H%M%S')}.png"))
+    image_path = os.path.join("images", f"{date.strftime('%Y_%m_%d_%H%M%S')}.png")
+    screenshot = driver.save_screenshot(image_path)
     driver.quit()
+    print(f"Webcam: Image saved: {image_path}")

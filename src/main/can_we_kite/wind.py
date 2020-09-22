@@ -25,4 +25,5 @@ def download_wind_measures(start, end, client):
             fields, measure)}, "time": time, "tags": {}, "measurement": "v1"} for measure, time in zip(values, times)]
 
         client.write_points(influx_data)
+        print(f"Wind: {len(influx_data)} point written in influx (Monteynard) from {start} to {end}.")
 
